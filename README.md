@@ -1,38 +1,61 @@
-Role Name
+ansible Playbook template
 =========
 
-A brief description of the role goes here.
+When new create playbook, git clone this repositroy
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
-
-Role Variables
---------------
-
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Use Ansible 2.0
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+ls playbooks 
+common.yml  init.yml
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+$ cat playbooks/common.yml 
 
-License
--------
+- hosts: all
+  roles:
+    - common
+    - authorized_key
 
-BSD
+Example Roles
+----------------
 
-Author Information
-------------------
+ls roles/
+authorized_key  common  ssh-keygen
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Example Enviroment
+----------------
+
+$ cat enviroments/init 
+[vm01]
+192.168.122.222
+
+# everything in the all
+[all:children]
+vm01
+
+[all:vars]
+ansible_ssh_port=22
+ansible_ssh_user=ansible
+ansible_ssh_pass=ansible
+ansible_sudo_pass=ansible
+
+Example Conf
+----------------
+
+ansible.cfg
+
+How to use
+----------------
+
+1. hosts and Playbook move inventory directory
+cp -p enviroments/init ./
+cp -p playbooks/* ./
+
+2. modify init file
+
+3. ansible-playbook -i init init.yml

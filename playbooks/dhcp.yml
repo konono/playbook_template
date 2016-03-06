@@ -1,5 +1,0 @@
----
-- hosts:dhcp
-  roles:
-  	- common
-    - dhcp
