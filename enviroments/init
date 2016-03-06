@@ -7,6 +7,6 @@ vm01
 
 [all:vars]
 ansible_ssh_port=22
-ansible_ssh_user=ansible
-ansible_ssh_pass=ansible
-ansible_sudo_pass=ansible
+ansible_ssh_user=your user name
+ansible_ssh_pass=your password
+ansible_sudo_pass=your password
