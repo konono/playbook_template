@@ -1,0 +1,5 @@
+---
+- hosts:tftp
+  roles:
+  	- common
+	- tftp

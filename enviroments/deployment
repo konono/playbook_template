@@ -1,0 +1,38 @@
+[vm-dhcp]
+192.168.122.222
+
+[vm-tftp]
+192.168.122.222
+
+# dhcpservers in all geos
+[dhcp:children]
+vm-dhcp
+
+[dhcp:vars]
+ansible_ssh_port=22
+ansible_ssh_user=ansible
+ansible_ssh_pass=ansible
+ansible_sudo_pass=ansible
+
+
+# tftpservers in all geos
+[tftp:children]
+vm-tftp
+
+[tftp:vars]
+ansible_ssh_port=22
+ansible_ssh_user=ansible
+ansible_ssh_pass=ansible
+ansible_sudo_pass=ansible
+
+
+# everything in the all
+[all:children]
+vm-dhcp
+vm-tftp
+
+[all:vars]
+ansible_ssh_port=22
+ansible_ssh_user=ansible
+ansible_ssh_pass=ansible
+ansible_sudo_pass=ansible

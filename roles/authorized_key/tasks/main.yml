@@ -1,0 +1,5 @@
+- name: Ensure SSH authorized key
+  authorized_key:
+    user=ansible
+    key="{{ lookup('file', 'files/key/id_rsa.pub') }}"
+    state=present
