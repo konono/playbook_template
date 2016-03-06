@@ -14,12 +14,6 @@ Example Playbook
 ls playbooks 
 common.yml  init.yml
 
-$ cat playbooks/common.yml 
-
-- hosts: all
-  roles:
-    - common
-    - authorized_key
 
 Example Roles
 ----------------
@@ -27,22 +21,6 @@ Example Roles
 ls roles/
 authorized_key  common  ssh-keygen
 
-Example Enviroment
-----------------
-
-$ cat enviroments/init 
-[vm01]
-192.168.122.222
-
-# everything in the all
-[all:children]
-vm01
-
-[all:vars]
-ansible_ssh_port=22
-ansible_ssh_user=ansible
-ansible_ssh_pass=ansible
-ansible_sudo_pass=ansible
 
 Example Conf
 ----------------
